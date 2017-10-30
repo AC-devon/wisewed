@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108541307-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108541307-1');
+</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>wisewed</title>
+    <meta name="description" content="ניהול החתונה באופן פיננסי וחכם">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="canonical" href="https://www.wisewed.co.il/profile.html" />
+    <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    <!---css + js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="css/general-style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        let user = auth.currentUser;
+
+        let parPage = "/"
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                dataBase.ref('users/' + user.uid).once('value').then(function (user) {
+                    if (user.val().Photo == "") {
+                        $("#user-image").css("background", "gray")
+                    } else {
+                        $("#user-image").attr("src", user.val().Photo)
+                    }
+                    $("#user-name").text(user.val().display)
+                })
+            } else {
+                window.location.href = parPage;
+            }
+        })
+    })
+
+</script>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://www.google.com/chrome/browser/desktop/index.html">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <span id="not-support-landscape">מצטערים אך אנחנו לא תומכים בתצוגה אופקית כרגע. אנא סובבו את המכשיר :)</span>
+    <div id="home-loader">
+        <div id="m-load"></div>
+    </div>
+    <div id="end-order">
+        <div id="final-order">
+            <img src="/images/blackClose.png" class="close-contract" />
+            <h2>מהו המחיר הסופי שסגרתם עם הספק?</h2>
+            <div style="text-align: center;margin: 15px 0px;">
+                <span>₪</span>
+                <input type="number" id="contract-price">
+            </div>
+            <button id="save">שמור</button>
+        </div>
+    </div>
+
+    <span id="page-warp">
+    <!-- suppliers list by range of price-->
+    <div class="supp-list">
+        <h3 id="h3-supps">
+            <span id="sup-mob-right">
+                <span id="suppliers-on">
+                        <span class="supplier-qan"></span> ספקים אפשריים ל<span class="supplier-name"></span>
+                </span>
+                <span id="suppliers-choosed">
+                        בחרתם להתקשר עם <span class="supplier-qan"></span> ספקים עבור <span class="supplier-name"></span>
+                    </span>
+                    <span id="contract-on">
+                            בחירתכם ל<span class="supplier-name"></span>
+                        </span>
+
+    </span><span id="sup-mob-left">
+                <img src="/images/blackClose.png" class="mob close-sup"/>
+            </span>
+    </h3>
+    <div id="loader">
+        <div id="load"></div>
+    </div>
+    <div id="sup-warp">
+
+    </div>
+    <div id="submit-supp">
+        <div id="submit-supp-in">
+        <div id="selected-supps">
+            נבחרו <span id="my-selected-supps"> 0 </span> ספקים
+        </div>
+        <button class="send-supps" onclick="createRecord()" id="submit-all-supp">שלח פרטי התקשרות והמשך</button>
+        <button class="send-supps" onclick="slideNextSup()" id="go-next-supp">המשך לקטגוריה הבאה</button>
+    </div>
+    </div>
+    </div>
+    <!--profile-->
+    <div id="profile-header">
+            
+        <div id="logo">
+            <a href="#"><img src="images/profile-logo.png"/></a>
+        </div>
+    
+        <div id="user">
+                <a id="user-link" href="/user.html"><img id="user-image" src="images/profile-logo.png" /> <span> שלום <strong id="user-name">משתמש</strong></span></a>
+            <span id="log-out">התנתק</span>
+        </div>
+    
+    </div>
+    <!--nav menu-->
+
+    <div id="nav">
+        <span id="head-line-nav" class="mob">אולם אירועים</span>
+        <ul>
+            <li class="selected-category"><span class="selected"></span><a href="#nav-hall">אולם אירועים</a></li>
+            <li> <span class="unselected"></span><a href="#nav-photography">צילום</a></li>
+            <li><span class="unselected"></span><a href="#nav-music">מוזיקה</a></li>
+            <li><span class="unselected"></span><a href="#nav-extra">אקסטרות</a></li>
+            <li><span class="unselected"></span><a href="#nav-groom">לחתן</a></li>
+            <li><span class="unselected"></span><a href="#nav-bride">לכלה</a></li>
+            <li><span class="unselected"></span><a href="#nav-prepare">הכנות לחתונה</a></li>
+        </ul>
+    </div>
+    <!--all suppliers inputs-->
+    <div class="container">
+
+
+        <div id="suppliers">
+            <div id="wed-expense">
+                <!--- הוצאות אולם אירועים -->
+                <h2 id="nav-hall" class="text-center expense-head-line">אולם אירועים</h2>
+                
+                <div id="halls" class="sup-budget">
+                    <div class='sup-close'>אולם אירועים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                עלות מנה
+                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="hall" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                        2000
+                                </span>
+                        <span class="min inline-block">
+                                        0
+                                </span>
+                    </div>
+                </div>
+
+                <div id="lights" class="sup-budget">
+                    <div class='sup-close'>תאורה, הגברה ואקו״ם</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                    תאורה, הגברה ואקו״ם                                    
+                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="light" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                            2000
+                                    </span>
+                        <span class="min inline-block">
+                                            0
+                                    </span>
+                    </div>
+                </div>
+                <div id="hallDesign" class="sup-budget">
+                    <div class='sup-close'>עיצוב אולם</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                    עיצוב אולם
+                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="design" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                            2000
+                                    </span>
+                        <span class="min inline-block">
+                                            0
+                                    </span>
+                    </div>
+                </div>
+                <!--- הוצאות צילום -->
+                <h2 id="nav-photography" class="text-center expense-head-line">צילום</h2>
+                
+                <div id="photographys" class="sup-budget">
+                    <div class='sup-close'>צילום - כללי</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                         צילום - כללי
+                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="photography" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                2000
+                                        </span>
+                        <span class="min inline-block">
+                                                0
+                                        </span>
+                    </div>
+                </div>
+                <div id="videoPhotography" class="sup-budget">
+                        <div class='sup-close'>קליפ חתונה</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                            קליפ חתונה
+                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="wedmovie" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                    2000
+                                            </span>
+                        <span class="min inline-block">
+                                                    0
+                                            </span>
+                    </div>
+                </div>
+                <div id="albumDesign" class="sup-budget">
+                        <div class='sup-close'>עיצוב אלבומים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                            עיצוב אלבומים
+                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="album" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                        2000
+                                                </span>
+                        <span class="min inline-block">
+                                                        0
+                                                </span>
+                    </div>
+                </div>
+                <div id="magnetim" class="sup-budget">
+                    <div class='sup-close'>מגנטים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                        מגנטים
+                                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="magnet" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                            2000
+                                                    </span>
+                        <span class="min inline-block">
+                                                            0
+                                                    </span>
+                    </div>
+                </div>
+                <!--- הוצאות מוזיקה -->
+                <h2 id="nav-music" class="text-center expense-head-line">מוזיקה</h2>
+                <div id="DJS" class="sup-budget">
+                        <div class='sup-close'>תקליטן/DJ</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                    תקליטן/DJ
+                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="dj" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                0
+                                                        </span>
+                        <span class="min inline-block">
+                                                                0
+                                                        </span>
+                    </div>
+                </div>
+                <div id="Drums" class="sup-budget">
+                        <div class='sup-close'>מעגלי מתופפים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                        מעגלי מתופפים
+                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="drum" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                    2000
+                                                            </span>
+                        <span class="min inline-block">
+                                                                    0
+                                                            </span>
+                    </div>
+                </div>
+                <div id="Bands" class="sup-budget">
+                        <div class='sup-close'>להקה/זמרים/נגנים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                            להקה/זמרים/נגנים
+                                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="band" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                        2000
+                                                                </span>
+                        <span class="min inline-block">
+                                                                        0
+                                                                </span>
+                    </div>
+                </div>
+                <!--- הוצאות אקסטרות -->
+                <h2 id="nav-extra" class="text-center expense-head-line">אקסטרות</h2>
+                <div id="hallsDesignOutside" class="sup-budget">
+                    <div class='sup-close'>עיצוב האולם חיצוני</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                    עיצוב האולם חיצוני
+                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="halloutside" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                2000
+                                                        </span>
+                        <span class="min inline-block">
+                                                                0
+                                                        </span>
+                    </div>
+                </div>
+                <div id="weddingDrivers" class="sup-budget">
+                        <div class='sup-close'>הסעות/לימוזינה/רכב יוקרה</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                        הסעות/לימוזינה/רכב יוקרה
+                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="limo" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                    2000
+                                                            </span>
+                        <span class="min inline-block">
+                                                                    0
+                                                            </span>
+                    </div>
+                </div>
+                <div id="ParticipationCertificates" class="sup-budget">
+                        <div class='sup-close'>אישורי השתתפות</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                            אישורי השתתפות
+                                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="cert" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                        2000
+                                                                </span>
+                        <span class="min inline-block">
+                                                                        0
+                                                                </span>
+                    </div>
+                </div>
+                <div id="attractions" class="sup-budget">
+                        <div class='sup-close'>אטרקציות וגימיקים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                אטרקציות וגימיקים
+                                                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="attr" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                            2000
+                                                                    </span>
+                        <span class="min inline-block">
+                                                                            0
+                                                                    </span>
+                    </div>
+                </div>
+                <!--- הוצאות לחתן -->
+                <h2 id="nav-groom" class="text-center expense-head-line">לחתן</h2>
+                <div id="groomSuits" class="sup-budget">
+                        <div class='sup-close'>חליפת חתן</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                    חליפת חתן
+                                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="groomSuit" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                2000
+                                                                        </span>
+                        <span class="min inline-block">
+                                                                                0
+                                                                        </span>
+                    </div>
+                </div>
+                <div id="groomShoes" class="sup-budget">
+                        <div class='sup-close'>נעליים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                        נעליים
+                                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="groomShoe" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                    2000
+                                                                            </span>
+                        <span class="min inline-block">
+                                                                                    0
+                                                                            </span>
+                    </div>
+                </div>
+                <div id="groomJewellerys" class="sup-budget">
+                        <div class='sup-close'>תכשיטים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                            תכשיטים
+                                                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="groomJew" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                        2000
+                                                                                </span>
+                        <span class="min inline-block">
+                                                                                        0
+                                                                                </span>
+                    </div>
+                </div>
+                <!--- הוצאות לכלה -->
+                <h2 id="nav-bride" class="text-center expense-head-line">לכלה</h2>
+                <div id="weddingDresses" class="sup-budget">
+                        <div class='sup-close'>שמלת כלה</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                    שמלת כלה
+                                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideDress" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                2000
+                                                                        </span>
+                        <span class="min inline-block">
+                                                                                0
+                                                                        </span>
+                    </div>
+                </div>
+                <div id="brideShoes" class="sup-budget">
+                        <div class='sup-close'>נעליים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                        נעליים
+                                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideShoe" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                    2000
+                                                                            </span>
+                        <span class="min inline-block">
+                                                                                    0
+                                                                            </span>
+                    </div>
+                </div>
+                <div id="brideJewellerys" class="sup-budget">
+                        <div class='sup-close'>תכשיטים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                            תכשיטים
+                                                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideJew" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                        2000
+                                                                                </span>
+                        <span class="min inline-block">
+                                                                                        0
+                                                                                </span>
+                    </div>
+                </div>
+                <div id="Bridehairstyle" class="sup-budget">
+                        <div class='sup-close'>מעצבי שיער</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                מעצבי שיער
+                                                                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideHair" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                            2000
+                                                                                    </span>
+                        <span class="min inline-block">
+                                                                                            0
+                                                                                    </span>
+                    </div>
+                </div>
+                <div id="brideFlowers" class="sup-budget">
+                        <div class='sup-close'>זר כלה</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                    זר כלה
+                                                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideFlower" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                                2000
+                                                                                        </span>
+                        <span class="min inline-block">
+                                                                                                0
+                                                                                        </span>
+                    </div>
+                </div>
+                <div id="brideMakeups" class="sup-budget">
+                        <div class='sup-close'>איפור</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                        איפור
+                                                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="brideMakeup" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                                    2000
+                                                                                            </span>
+                        <span class="min inline-block">
+                                                                                                    0
+                                                                                            </span>
+                    </div>
+                </div>
+                <!--- הכנות לחתונה -->
+                <h2 id="nav-prepare" class="text-center expense-head-line">הכנות לחתונה</h2>
+                <div id="weddingPrepare" class="sup-budget">
+                        <div class='sup-close'>רישום לנישואין ברבנות</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                    רישום לנישואין ברבנות
+                                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="prep" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                2000
+                                                                        </span>
+                        <span class="min inline-block">
+                                                                                0
+                                                                        </span>
+                    </div>
+                </div>
+                <div id="Rabbis" class="sup-budget">
+                        <div class='sup-close'>רב/עורך חופה</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                        רב/עורך חופה
+                                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="Rabbi" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                    2000
+                                                                            </span>
+                        <span class="min inline-block">
+                                                                                    0
+                                                                            </span>
+                    </div>
+                </div>
+                <div id="Giftsforguests" class="sup-budget">
+                        <div class='sup-close'>מתנות לאורחים</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                            מתנות לאורחים
+                                                                            </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="guestGifts" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                        2000
+                                                                                </span>
+                        <span class="min inline-block">
+                                                                                        0
+                                                                                </span>
+                    </div>
+                </div>
+                <div id="rings" class="sup-budget">
+                        <div class='sup-close'>טבעות</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                טבעות
+                                                                                </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="ring" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                            2000
+                                                                                    </span>
+                        <span class="min inline-block">
+                                                                                            0
+                                                                                    </span>
+                    </div>
+                </div>
+                <div id="Invitations" class="sup-budget">
+                        <div class='sup-close'>הזמנות</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                    הזמנות
+                                                                                    </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="invite" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                                2000
+                                                                                        </span>
+                        <span class="min inline-block">
+                                                                                                0
+                                                                                        </span>
+                    </div>
+                </div>
+                <div id="Alcohol" class="sup-budget">
+                        <div class='sup-close'>אלכוהול</div>
+                    <img class="xClose" src="images/close.png">
+                    <div class="warp-price">
+                        <span class="text inline-block">
+                                                                        אלכוהול
+                                                                                        </span>
+                        <span class="price inline-block">₪<span class="last-price">0</span></span>
+                    </div>
+
+                    <input type="range" id="alc" oninput="slidemoved(this)" class="form-control">
+                    <div class="warp-price">
+                        <span class="max inline-block">
+                                                                                                    2000
+                                                                                            </span>
+                        <span class="min inline-block">
+                                                                                                    0
+                                                                                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+     
+        $("body").click(function () {
+                
+                if ($(".supp-list").hasClass("supp-list-active")) {
+                    $(".calc").css("display", "none")
+                } else {
+                    $(".calc").css("display", "block")
+                }
+            })
+    </script>
+    <!--- calc area-->
+    <div class="calc">
+        <div id="head-clac">
+            <div id="nav-calc">
+                <div id="right-calc">
+                    <span class="highlight-text">סה"כ תקציב מתוכנן:</span>
+                    <span id="ils">₪</span><span id="highlight-price">0</span>
+                    
+                </div>
+                <div id="arrow-calc"><img src="/images/Arrow_white.svg" id=""></div>
+                <div id="left-calc">
+                    <span class="highlight-text">סה"כ התחייבות:</span>
+                    <span id="ils">₪</span><span id="highlight-last-price">0</span>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="sup-calc">
+            <div id="warp-calc">
+                <div class="last-price-calc">
+                    <h2>אולם אירועים</h2>
+                    <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                        <div class="inline-calc calc-right"><span>0</span></div>
+                        <div class="inline-calc calc-middle">
+                            <div id="contract-hall" class="inside-middle-calc">אולם אירועים</div>
+                            
+                        </div>
+                        <div class="inline-calc calc-left"><span>0</span></div>
+                    </div>
+                    <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                        <div class="inline-calc calc-right"><span>0</span></div>
+                        <div class="inline-calc calc-middle">
+                            <div id="contract-light" class="inside-middle-calc">תאורה, הגברה ואקו״ם</div>
+                            
+                        </div>
+                        <div class="inline-calc calc-left"><span>0</span></div>
+                    </div>
+                    <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                        <div class="inline-calc calc-right"><span>0</span></div>
+                        <div class="inline-calc calc-middle">
+                            <div id="contract-design" class="inside-middle-calc">עיצוב אולם</div>
+                            
+                        </div>
+                        <div class="inline-calc calc-left"><span>0</span></div>
+                    </div>
+                </div>
+                <div class="last-price-calc">
+                        <h2>צילום</h2>
+                        <div class="calc-sup-full">
+                                <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-photography" class="inside-middle-calc">צילום - כללי</div>      
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                                <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-wedmovie" class="inside-middle-calc">קליפ חתונה</div>  
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                                <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-album" class="inside-middle-calc">עיצוב אלבומים</div>  
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                                <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-magnet" class="inside-middle-calc">מגנטים</div>  
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                    </div>
+                    <div class="last-price-calc">
+                            <h2>מוזיקה</h2>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-dj" class="inside-middle-calc">תקליטן/DJ</div>      
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-drum" class="inside-middle-calc">מעגלי מתופפים</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-band" class="inside-middle-calc">להקה/זמרים/נגנים</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>         
+                     </div>
+                     <div class="last-price-calc">
+                            <h2>אקסטרות</h2>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-halloutside" class="inside-middle-calc">עיצוב האולם חיצוני</div>      
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-limo" class="inside-middle-calc">הסעות/לימוזינה/רכב יוקרה</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-cert" class="inside-middle-calc">אישורי השתתפות</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>        
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-attr" class="inside-middle-calc">אטרקציות וגימיקים</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>         
+                     </div>
+                     <div class="last-price-calc">
+                            <h2>לחתן</h2>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-groomSuit" class="inside-middle-calc">חליפת חתן</div>      
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-groomShoe" class="inside-middle-calc">נעליים</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>
+                            <div class="calc-sup-full">
+                                    <div class="border-line"></div>
+                                <div class="inline-calc calc-right"><span>0</span></div>
+                                <div class="inline-calc calc-middle">
+                                    <div id="contract-groomJew" class="inside-middle-calc">תכשיטים</div>  
+                                </div>
+                                <div class="inline-calc calc-left"><span>0</span></div>
+                            </div>        
+                           
+                     </div>
+                    <div class="last-price-calc">
+                        <h2>לכלה</h2>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideDress" class="inside-middle-calc">שמלת כלה</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideShoe" class="inside-middle-calc">נעליים</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideJew" class="inside-middle-calc">תכשיטים</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideHair" class="inside-middle-calc">מעצבי שיער</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideFlower" class="inside-middle-calc">זר כלה</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideMakeup" class="inside-middle-calc">איפור</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                    </div>
+                    <div class="last-price-calc">
+                        <h2>הכנות לחתונה</h2>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-prep" class="inside-middle-calc">רישום לנישואין ברבנות</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-Rabbi" class="inside-middle-calc">רב/עורך חופה</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-guestGifts" class="inside-middle-calc">מתנות לאורחים</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-ring" class="inside-middle-calc">טבעות</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-brideFlower" class="inside-middle-calc">הזמנות</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                        <div class="calc-sup-full">
+                            <div class="border-line"></div>
+                            <div class="inline-calc calc-right"><span>0</span></div>
+                            <div class="inline-calc calc-middle">
+                                <div id="contract-alc" class="inside-middle-calc">אלכוהול</div>
+                            </div>
+                            <div class="inline-calc calc-left"><span>0</span></div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    </span>
+    <script src="js/profile-functions.js"></script>
+    <script src="js/lang.js"></script>
+</body>
+
+</html>

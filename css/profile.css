@@ -1,0 +1,881 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family:main-font;
+    transition: 0.2s ease 0s;
+    background:#f6d365; 
+}
+.body-overlay {
+    overflow: hidden;
+}
+
+/* end order css*/
+#go-next-supp{
+    display: none;
+    text-align: center;
+    margin: 0 auto;
+}
+.recomand{
+    margin-top: 40% !important
+}
+.sup-contract-end {
+    background: #efefef;
+    width: 95% !important;
+    border-bottom: 0 !important;
+    margin: 0 auto;
+}
+.sup-contract-details{
+    width: 95%;
+    margin: 0 auto;
+}
+.sup-contract-details h4{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+#contract-name{
+    display: none;
+}
+.sup-img-contract {
+    text-align: center;
+}
+.sup-img-contract img {
+    width: 290px;
+    max-height: 140px;
+    max-width: 90%;
+}
+.warp-text-contract {
+    border-bottom: 1px solid gray;
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+.left-text-contract {
+    width: 35%;
+    vertical-align: top;
+    margin: 10px 0;
+}
+#contract-logo {
+    width: 40px;
+    vertical-align: top;
+}
+
+#red-contract-price {
+    color: #e74b46;
+    font-weight: bold;
+}
+.right-text-contract {
+    width: 60%;
+    border-left: 1px solid gray;
+}
+.right-text-contract img{
+    width: 70px;
+}
+#warp-logo {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 0;
+}
+#contract-name-in{
+    display: inline-block;
+    width: 50%;
+    margin: 10px 0;
+    vertical-align: top;
+    font-size: 14px;
+    text-align: right;
+}
+.cancel-contracts{
+    text-align: center;
+    border-top: 1px solid gray;
+    margin: 17px 0;
+}
+#cacnel-cta{
+    margin-top: 15px;
+    cursor: pointer;
+}
+#end-order{
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+    z-index: 1000;
+}
+img.close-contract {
+    position: absolute;
+    cursor: pointer;
+    left: 20px;
+    top: 20px;
+}
+#final-order{
+    height: 210px;
+    width: 600px;
+    max-width: 95%;
+    border: 0px solid black;
+    box-shadow: black 0px 0px 20px;
+    margin: 15% auto;
+    background-color: white;
+    border-radius: 7px;
+    padding-top: 50px;
+    text-align: center;
+    position: relative;
+}
+#final-order h2{
+    direction: rtl;
+    font-size:20px;
+}
+#end-order span{
+    font-size: 35px !important;
+    vertical-align: bottom;
+    display: inline-block;
+}
+#end-order input{
+    display: inline-block !important;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    max-width: 100%;
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: 0;
+}
+.invalid {
+    border:1px solid red !important;
+    -webkit-animation: rotate 0.5s linear ;
+    animation: rotate 0.5s linear ;
+
+}
+@-webkit-keyframes rotate {
+    0% { width: 100px; }
+    50% { width: 70px; }
+    100% { width: 100px; }
+}
+
+@keyframes rotate {
+    0% { width: 100px; }
+    50% { width: 70px; }
+    100% { width: 100px; }
+}
+
+#save{
+    margin: 0 auto;
+    display: block;
+    width: 250px;
+    max-width: 100%;
+    height: 49px;
+    border: 0;
+    background: #e84b41;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 1s ease 0s;
+    
+}
+
+
+/* profile header css */
+.expense-head-line{
+    padding:50px 0 0;
+}
+
+#profile-header {
+    direction: rtl;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 11;
+}
+#logo {
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+}
+#logo img {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+
+#user {
+    display: inline-block;
+    vertical-align: top;
+}
+#user-link{
+    color:black;
+    text-decoration: none;
+}
+#user-image {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#log-out{
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+/* suppliers budget css */
+.close-sup .sup-close{
+    display:block;
+    text-align: center;
+    font-size: 15px;
+}
+.sup-close {
+    display:none;
+    
+}
+.container-with-supps{
+    margin-left: auto;
+    margin-right: 0;
+    width: 75%;
+}
+#suppliers {
+    margin: 0 auto;
+    width: 500px;
+    max-width: 100%;
+    
+}
+.xClose{
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    cursor: pointer;
+    transition: 0.3s ease 0s;
+}
+.close-sup.sup-budget{
+    height: 26px;
+    opacity: 0.5;
+    display: block;
+    transition: 0.3s ease 0s;
+}
+.close-sup .xClose{
+    transform: rotate(45deg);
+    transition: 0.3s ease 0s;
+}
+.close-sup .warp-price,.close-sup .form-control{
+    display: none;
+    transition: 0.3s ease 0s;
+}
+.sup-budget{
+    cursor: pointer;
+    margin: 30px 0;
+    height: 115px;
+    position: relative;
+    background: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    transition: 0.1s ease 0s;
+}
+.sup-budget-border{
+    border:2px solid #e74b46;
+}
+.warp-price {
+    margin: 20px 0;
+    direction: rtl;
+    
+}
+.text {
+    text-align: right;
+    width: 85%;
+    font-weight: bold;
+}
+.price{
+    width: 12%;
+    text-align: left;
+    font-weight: bold;
+    color:#e74b46;
+}
+
+
+.min{
+    width: 48%;
+    text-align: left;
+    
+}
+
+.max{
+    width: 49%;
+    text-align: right;
+}
+
+/* supplier list css */
+#suppliers-on,#suppliers-choosed,#contract-on{
+    display: none;
+}
+#contact-qt-name{
+    font-weight: bold;
+}
+.supp-list {
+    direction: rtl;
+    width: 29%;
+    height: 100%;
+    vertical-align: top;
+    display: inline-block;
+    left: -1000px;
+    position: fixed;
+    background: white;
+    transition: 0.3s ease 0s;
+}
+#h3-supps {
+    text-align: center;
+    width: 85%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.supp-list-active{
+    left: 0;
+}
+.supplier-name{
+    font-weight: bold;
+    color:#e74b46;
+}
+#sup-warp {
+    overflow-y: scroll;
+    height: 82%;
+}
+#submit-supp {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    font-weight: bold;
+    height: 15%;
+    background: #e74b46;
+    text-align: center;
+}
+div#submit-supp-in {
+    bottom: calc(50% - 15px);
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+}
+#selected-supps {
+    width: 25%;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    margin-right: 10px;
+}
+.send-supps {
+    width: 62%;
+    background: white;
+    outline: 0;
+    border: 0;
+    border-radius: 18px;
+    padding: 8px 22px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.sup-img,.sup-text{
+    width: 47%;
+    vertical-align: top;
+}
+img.sup-text-class, .sup-image-class{
+    width: 80px;
+}
+.a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: right;
+    display: block;
+
+}
+.p-text{
+    font-size: 14px;
+}
+.sup {
+    padding: 20px 0;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+.contact-supp {
+    border-radius: 41px;
+    font-size: 14px;
+    height: 25px;
+    width: 89px;
+    color: black;
+    outline: 0;
+    text-align: center;
+    margin: 20px auto 0;
+    cursor: pointer;
+    border: 2px solid #e84b41;
+    transition: 0.3s ease 0s;
+}
+.after-select-check{
+    background: url("/images/set-sup.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 35px;
+    margin-top: 20px;
+    
+}
+.sup-contract{
+    background: #efefef;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.remove-from-contracts{
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+#more-supp {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.contract-end{
+    border-radius: 41px;
+    font-size: 14px;
+    height: 23px;
+    width: 89px;
+    color: white;
+    background: #e84b41;
+    outline: 0;
+    text-align: center;
+    margin: 10px auto 0;
+    padding-top: 2px;
+    cursor: pointer;
+    border: 2px solid #e84b41;
+    transition: 0.3s ease 0s;
+}
+.contract-end:hover{
+    color: #e84b41;
+    background: white;
+
+}
+/* nav css*/
+#nav {
+    direction: rtl;
+    position: fixed;
+    top: 35%;
+    right: 0;
+    width: 17%;
+    
+}
+
+#nav ul{
+    list-style: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    right:20%;
+}
+#nav li {
+    cursor: pointer;
+    height: 26.4px;
+}
+#nav li a{
+    height: 25px;
+    text-decoration: none;
+    color: black;
+    }
+
+.selected-category a {
+    font-weight: bold; 
+    color: #eb6662 !important;
+}
+.selected-category::before{
+    color: #eb6662 !important;
+}
+#nav span {
+    margin-left: 20px;
+
+}
+
+.selected {
+    height: 13px;
+    width: 13px;
+    background-color: #e74b46;
+    border-radius: 100%;
+    display: inline-block;
+
+    border: 2px solid white;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    vertical-align: middle;
+}
+
+.unselected {
+    height: 6px;
+    width: 6px;
+    border-radius: 100%;
+    display: inline-block;
+    border: 2px solid #a79495;
+    vertical-align: middle;
+}
+/* calc open css*/
+.calc.calc-open{
+    height: 100%;
+}
+.calc.calc-open #nav-calc {
+    margin-top: 75px;
+}
+.calc.calc-open #right-calc span,.calc.calc-open #left-calc span{
+    font-size: 20px;
+}
+.calc.calc-open .highlight-text,.calc.calc-open .highlight-text{
+    display: block;
+}
+.calc.calc-open #head-clac{
+    height: 25%;
+    background:#3b2e2e;
+    
+}
+.calc.calc-open #arrow-calc{
+    bottom: -9px;
+    top: auto;
+    z-index: 5;
+}
+.calc.calc-open #arrow-calc img{
+    transform: rotate(90deg);
+}
+
+
+.calc.calc-open .highlight-text{
+    color:#c98c7f;
+}
+.calc.calc-open #sup-calc{
+    bottom:0;
+}
+
+#sup-calc{
+    overflow-y: scroll;
+    height: 75%;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    background: #eaeaea;
+}
+#warp-calc {
+    width: 75%;
+    margin: 0 auto;
+    color:#4b3c3c;
+}
+
+.last-price-calc {
+    margin-top: 5%;
+}
+.last-price-calc:last-child {
+    margin-bottom: 5%;
+}
+.last-price-calc h2{
+text-align: center;
+margin-top: 50px;
+margin-bottom: 25px;
+}
+.calc-sup-full {
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 16px;
+}
+.border-line {
+    height: 1px;
+    width: 60%;
+    background: #928c8c;
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    z-index: -1;
+}
+.calc-right{
+    text-align: right;
+}.calc-left{
+    text-align: left;
+}
+.inline-calc{
+    width: 25%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.inline-calc.calc-middle{
+    width: 45%;
+}
+.inside-middle-calc {
+    max-width: 100%;
+    width: 85%;
+    margin: 0 auto;
+    padding: 5px;
+    background: #928c8c;
+    color: white;
+    border-radius: 10px;
+}
+.go-sup{
+    border-radius: 41px;
+    color: white;
+    background: #e84b41;
+    outline: 0;
+    text-align: center;
+    width: 100px;
+    max-width: 100%;
+    padding: 2px 0;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #e84b41;
+    transition: 0.3s ease 0s;
+}
+.go-sup:hover{
+    color: #e84b41;
+    background: white;
+
+}
+.calc .border{
+    width: 100px;
+    max-width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+/* calc closed css*/
+.calc {
+
+    width: 100%;
+    height: 38px;
+    color: white;
+    position: fixed;
+    bottom: 0px;
+    direction: rtl;
+    z-index: 10;
+    display: block;
+    box-shadow: 10px 10px 10px 10px black;
+    transition: 0.3s ease 0s;
+}
+#head-clac{
+    height: 100%;
+position: relative;
+padding-top: 0.5%;
+background-color: rgb(75, 60, 60);
+}
+#right-calc {
+    position: absolute;
+    right: 7%;
+    text-align: center;
+}
+
+#left-calc {
+    position: absolute;
+    left: 0;
+    margin-left: 7%;
+    text-align: center;
+}
+#arrow-calc {
+   transition: 0.3s ease-in-out 0s;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -6px;
+}
+
+#arrow-calc img {
+    cursor: pointer;
+    transform: rotate(270deg);
+    background-color: #595959;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    padding: 6px;
+}
+
+#warp-calc{
+    width:75%;
+}
+@media (max-width: 768px){
+    /* calc css*/
+    .calc {
+        font-size: 14px;
+        height: 50px;
+    }
+    .calc-sup-full {
+        text-align: center;
+        font-size: 14px;
+    }
+    .calc.calc-open #right-calc span, .calc.calc-open #left-calc span{
+        font-size: 14px;
+    }
+    .highlight-text, .highlight-text{
+        display: block;
+    }
+    .border-line{
+        display: none;
+    }
+    #warp-calc{
+        width:95%;
+    }
+    .go-sup{
+        width: 80%;
+    }
+     /* end calc css*/    
+    .sup-contract{
+        margin: 0 0;
+    }
+    .sup-contract-end{
+        overflow-y: scroll;
+    }
+    .after-select-check{
+
+        margin-top: 0;
+        
+    }
+    #profile-header{
+        width: 100%;
+    }
+    #user{
+        position: absolute;
+        left: 10%;
+        top: 5px;
+    }
+    #user-link span{
+        display: none;
+    }
+    #nav li::before{
+        color: red;
+    }
+    #nav ul{
+        right:0;
+    }
+    #nav span {
+        margin: 0 auto;
+    }
+    .container {
+        margin-right: 0;
+        margin-left: 5%;
+        width: 80%;
+        transition: 0.3s ease 0s;
+    }
+    #nav {
+        direction: rtl;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 10%;
+        height: 100%;
+        padding-top:185px;
+        background: white;
+    }
+    #nav li{
+        text-align: center;
+    }
+    #nav li a{
+        display: none;
+    }
+    #head-line-nav{
+        display: block;
+        transform: rotate(90deg);
+        width: 100px;
+        position: relative;
+        color: #e95c57;
+        font-weight: bold;
+        top: -65px;
+        left: 2em;
+        margin: 0 auto;
+        text-shadow: 0px 0px 5px grey;
+    }
+    #sup-warp { 
+
+        overflow-y: hidden;
+        display: flex;
+    }
+    span#sup-mob-right {
+        width: 94%;
+        display: inline-block;
+    }
+    #h3-supps{
+        text-align: right;
+        padding:15px;
+        border: 0;
+        font-size:15px;
+        }
+    .contact-supp{
+        margin: 10px 0;
+    }
+    .text{
+        font-size: 15px;
+    }
+    .close-sup{
+        display: inline-block;
+    }
+
+    .supp-list {
+        direction: rtl;
+        width:100%;
+        height: 400px;
+        padding-bottom: 25px;
+        bottom: 0;    
+        display: inline-block;
+        z-index: 2;
+    }
+    .sup{
+        padding: 10px 24px;
+        text-align: right;
+        width: 135px;
+        border: 0;
+        display: inline-block;
+    }
+    #more-supp {
+        text-align: center;
+        padding-top: 93px;
+        font-size: 20px;
+        width: 40px;
+        
+        font-weight: normal;
+        position: absolute;
+        left: 0;
+        height: 44%;
+        background: white;
+    }
+    #more-supp p {
+        transform: rotate(270deg);
+        width: 182px;
+        position: absolute;
+        left: -74px;
+        padding: 0;
+        margin: 0;
+    }
+    i.fa.fa-angle-left {
+        color: white;
+        font-size: 16px;
+        position: relative;
+        bottom: 2.5px;
+    }
+    #more-sup-icon{
+        position: relative;
+        top: 159px;
+        background: black;
+        border-radius: 0 10px 10px 0px;
+        width: 35px;
+        left: -7px;
+    }
+    .sup-img,.sup-text{
+        width: 100%;
+        vertical-align: top;
+    }
+    .container-with-supps{
+        margin: 0 auto;
+        width: 95%;
+    }
+ 
+    .send-supps {
+        width: 58%;
+        padding: 7px 12px;
+    }
+    .p-text {
+        font-size: 12px;
+        height: 90px;
+        width: 110px;
+    }
+}
+
+
