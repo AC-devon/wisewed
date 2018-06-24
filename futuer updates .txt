@@ -1,5 +1,0 @@
-1.to make nav moudulr
-2.fix suppliers class and ID infornt firebase call
-3.fix moudle function for min-max price for all suppliers
-4.add close class to all suppliers that dont have data
-5.fix css for selected sup to finish contract
