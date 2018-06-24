@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #efefef;
+}
+#warp{
+    max-width: 100%;
+}
+
+/* suppliers header css */
+header{
+    background: white;
+}
+#top-line {
+    padding-top: 20px;
+    margin: 0 10px;
+}
+#nav-back a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+#nav-back {
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+}
+#logo-plus-user{
+    display: inline-block;
+    width: 49%;
+    direction: rtl;
+    text-align: right;
+}
+#logo {
+    background: rgba(0, 0, 0, 0.3);
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+}
+#logo img {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+#user {
+    display: inline-block;
+    padding-bottom: 10px;
+    vertical-align: text-bottom;
+}
+#user-link{
+    color:black;
+    text-decoration: none;
+}
+#user-image {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+/* image slider */
+
+@keyframes slidy {
+    0% { left: 0%; }
+    100% { left: -100%;}
+    
+    }
+    @-webkit-keyframes slidy {
+        0% { left: 0%; }
+        100% { left: -100%;}
+        
+    }
+   
+    div#slider {   
+        overflow: hidden;
+        margin: 0;
+        height: 330px;
+
+    }
+    div#slider figure img {min-height: 330px; width: 50%; float: left; }
+    div#slider figure { 
+      position: relative;
+      width: 200%;
+      margin: 0;
+      left: 0;
+      text-align: left;
+      font-size: 0;
+      
+      animation: 5s slidy infinite; 
+      -webkit-animation-duration: 5s slidy infinite;  /* Safari 4.0 - 8.0 */
+      
+      
+    }
+
+
+    /* warp content css */
+    #warp-content {
+        direction: rtl;
+        position: relative;
+        background: #efefef;
+    }
+
+    /* gift css*/
+    #gift {
+        position: absolute;
+        top: -50px;
+        left: 5%;
+
+    }
+    #box{
+        background: white;
+        height: 400px;
+        width: 365px;
+        max-width: 95%;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    
+    #box-head {
+        text-align: right;
+        font-size: 22px;
+        border-bottom: 1px solid gray;
+        padding: 10px 35px;
+}
+#box-text {
+    text-align: right;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+#for-what {
+    margin-bottom: 40px;
+}
+.cta-pos{
+
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+#cta{
+    color: white;
+    background: #e74b46;
+    padding:5px 0;
+    margin: 0 auto;
+    width: 270px;
+    cursor: pointer;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+
+
+
+/*context css*/
+
+#content {
+    width: 90%;
+    margin: 0 auto;
+}
+#sup-warp {
+    padding-top: 30px;
+}
+#sup-logo img {
+    background: rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+#sup-logo{
+    padding-left: 20px;
+    vertical-align: top;
+}
+#sup-text {
+    max-width: 74%;
+}
+#sup-name{
+    font-size: 40px;
+}
+
+#sup-rate img {
+    width: 70px;
+}
+
+#sup-desc {
+    margin-top: 40px;
+    width: 450px;
+    max-width: 100%;
+    font-size: 16px;
+}
+.slick-slide img {
+    display: block;
+    width: 100%;
+    bottom:200px;
+    position: relative;
+}
+@media (max-width: 768px){
+    div#slider {   
+        overflow: hidden;
+        margin: 0;
+        height: 330px;
+        height: 150px;
+    }
+
+    .slick-slide img {
+
+        bottom:0px;
+    }
+#user-link span{
+    display: none;
+}
+
+#gift{
+    top: 100px;
+  left: 0;
+  right: 0; 
+}
+
+#sup-warp {
+    padding-top: 30px;
+    height: 450px;
+}
+#sup-desc {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 450px;
+    max-width: 100%;
+    font-size: 16px;
+}
+#sup-logo img {
+
+    width: 50px;
+    height: 50px;
+
+}
+#sup-name{
+    font-size: 19px;
+}
+}

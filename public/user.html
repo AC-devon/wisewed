@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108541307-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108541307-1');
+</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>wisewed</title>
+    <meta name="description" content="ניהול החתונה באופן פיננסי וחכם">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="canonical" href="https://app.wisewed.co.il/user.html" />
+    <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    <!---css + js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/library/keyword.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/general-style.css">
+    <link rel="stylesheet" href="css/user.css">
+   
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="js/library/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script src="js/library/keyword.js"></script>
+    <script src="app.js"></script>
+    <script src="js/user.js"></script>
+</head>
+    <body>
+        <div id="forget-alert">
+            <div id="forget-text">היי! נראה ששחכתם למלא שדה חובה!</div>
+            
+        </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="www.googe.com">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- <span id="not-support-landscape">מצטערים אך אנחנו לא תומכים בתצוגה אופקית כרגע. אנא סובבו את המכשיר :)</span> -->
+      <div id="home-loader">
+            <div id="m-load"></div>
+        </div> 
+        <div class="">
+            <div id="user-area">
+                <div class="marg" id="user-head">
+                        <div id="title">יצירת פרופיל</div>
+                       
+                        <form>
+                    <div class="user-gender">
+                            <div id="am-bride" onclick="gender(id)"  class="wedder wedder-active">אני כלה</div>
+                            <div class="spin-par"><div class="spin"></div></div>
+                        <div id="icon-bride" class="icon"><i class="fa fa-camera" aria-hidden="true"></i></div>
+                        <input type="file" id="imguploadbride" class="hidden-input"/> 
+                        <img class="user-image" id="user-image-female" src="images/bride-user.png" />
+                        
+                        <input type="radio" checked id="am-bride-input"  name="gender" value="female" class="hidden-input"> 
+                        <div class="inputs-wrap">
+                                <input class="input-style" type="text" id="WifeName" onkeydown="return detectLetter(event);" placeholder="שם הכלה">    
+                                <select class="input-style citys" id="WifeArea" onkeypress="keyUp(this)" placeholder="אזור מגורים">
+
+                                </select>
+
+                            </div>    
+                     </div>
+                     <div class="user-gender" >
+                            <div id="am-groom" onclick="gender(id)" class="wedder">אני חתן</div>
+                            <div class="spin-par"><div class="spin"></div></div>
+                            <div id="icon-groom"  class="icon"><i class="fa fa-camera" aria-hidden="true"></i></div>
+                            <input type="file" id="imguploadgroom" class="hidden-input"/> 
+                            <img class="user-image" id="user-image-male" src="images/groom-user.png" />
+                            <input type="radio"  id="am-groom-input" name="gender" value="male" class="hidden-input"> 
+                            <div class="inputs-wrap">
+                                    <input class="input-style" type="text" id="HusbandName" onkeydown="return detectLetter(event);" placeholder="שם החתן">
+                                    <select class="input-style citys" id="HusbandArea" onkeypress="keyUp(this)" placeholder="אזור מגורים">
+
+                                    </select>
+                              
+
+                                 
+                                </div>
+                                </div>    
+                         </div>
+                         <div class="inputs">
+                                <input class="input-style" type="text" id="Email" disabled placeholder="כתובת אימייל">
+                                <input class="input-style" type="number" id="PhoneNumber" placeholder="טלפון נייד">     
+                                <input class="input-style" type="text" id="WantedHall" placeholder="אולם רצוי (לא חובה)">
+                                <input class="input-style" type="text" id="WantedArea" placeholder="איזור רצוי">     
+                                <input class="input-style" type="number" id="Invites" placeholder="מספר מוזמנים">
+                                <input class="input-style" type="text" id="date"  min="2018-1-25" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="תאריך החתונה">
+
+                                <label>
+                                    <input id="wedCheckBox" onchange="weddingDateCheck(event)" type='checkbox'>
+                                    <span></span>
+                                    אין תאריך חתונה
+                                  </label>
+                            </div>   
+                        </form>
+                <button onclick="updateUser()" id="cta">בואו נתחיל!</button>
+            
+
+           
+
+        </div>
+        <script src="https://cdn.enable.co.il/licenses/enable-L1039ij4hgr8536-1217-2230/init.js"></script>
+        
+    </body>
+</html>
